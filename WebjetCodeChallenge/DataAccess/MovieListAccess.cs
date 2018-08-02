@@ -54,19 +54,19 @@ namespace WebjetCodeChallenge.DataAccess
             }
         }
 
-        private static void AddToMaster(string comapny, ReturnedData data)
+        private static void AddToMaster(string company, ReturnedData data)
         {
             if (MovieDatabase.ContainsKey(data.Title))
             {
-                if (!MovieDatabase[data.Title].Price.ContainsKey(comapny))
+                if (!MovieDatabase[data.Title].Price.ContainsKey(company))
                 {
-                    MovieDatabase[data.Title].Price.Add(comapny, Convert.ToDouble(data.Price));
+                    MovieDatabase[data.Title].Price.Add(company, Convert.ToDouble(data.Price));
                 }
-                if (!MovieDatabase[data.Title].Id.ContainsKey(comapny))
+                if (!MovieDatabase[data.Title].Id.ContainsKey(company))
                 {
-                    MovieDatabase[data.Title].Id.Add(comapny, data.ID);
+                    MovieDatabase[data.Title].Id.Add(company, data.ID);
                 }
-                MovieDatabase[data.Title].Company.Add(comapny);
+                MovieDatabase[data.Title].Company.Add(company);
             }
 
             else
@@ -93,9 +93,9 @@ namespace WebjetCodeChallenge.DataAccess
                     Votes = data.Votes
 
                 };
-                movie.Id.Add(comapny, data.ID);
-                movie.Price.Add(comapny, Convert.ToDouble(data.Price));
-                movie.Company.Add(comapny);
+                movie.Id.Add(company, data.ID);
+                movie.Price.Add(company, Convert.ToDouble(data.Price));
+                movie.Company.Add(company);
                 MovieDatabase.Add(data.Title, movie);
             }
         }
