@@ -1,0 +1,29 @@
+﻿@model Dictionary<string, WebjetCodeChallenge.Models.MovieDetails>
+@{
+    ViewBag.Title = "Home Page";
+}
+<body>
+    <table class="table">
+        <tr>
+            <th></th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <img height="50" src="@item.Value.Poster" alt="Movie Poster" />
+                </td>
+                <td>
+                    @item.Value.Title
+                </td>
+                <td>@item.Value.Price.Select(x => x.Key).Min()</td>
+                <td>
+                    $@item.Value.Price.Select(x => x.Value).Min()
+                </td>
+                <td>@Html.ActionLink("Details", "Details", new { MovieName = item.Key })</td>
+            </tr>
+        }
+    </table>
+</body>
